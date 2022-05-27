@@ -1,5 +1,3 @@
-from multiprocessing import context
-
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 
@@ -21,8 +19,10 @@ class NewsPageView(TemplateView):
         return context
 
 
-class NewsWithPaginatorView(NewsPageView):
-    def get_context_data(self, pk, **kwargs):
+class NewsPageDetailView(TemplateView):
+    template_name = "mainapp/news_detail.html"
+
+    def get_context_data(self, pk=None, **kwargs):
         context = super().get_context_data(pk=pk, **kwargs)
         context["news_object"] = get_object_or_404(mainapp_models.News, pk=pk)
         return context
@@ -38,18 +38,14 @@ class CoursesListView(TemplateView):
 
 
 class CoursesDetailView(TemplateView):
-    template_name = "mainapp/courses_detail;.html"
+    template_name = "mainapp/courses_detail.html"
 
     def get_context_data(self, pk=None, **kwargs):
-        super(CoursesDetailView, self).get_context_data(**kwargs)
+        context = super(CoursesDetailView, self).get_context_data(**kwargs)
         context["course_object"] = get_object_or_404(mainapp_models.Courses, pk=pk)
-        context["lesson"] = mainapp_models.Lesson.objects.filter(course=context["course_object"])
+        context["lessons"] = mainapp_models.Lesson.objects.filter(course=context["course_object"])
         context["teachers"] = mainapp_models.CourseTeachers.objects.filter(course=context["course_object"])
         return context
-
-
-class CoursesPageView(TemplateView):
-    template_name = "mainapp/courses_list.html"
 
 
 class ContactsPageView(TemplateView):
