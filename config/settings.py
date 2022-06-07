@@ -114,6 +114,7 @@ AUTH_USER_MODEL = "authapp.CustomUser"
 AUTHENTICATION_BACKENDS = (
     "social_core.backends.github.GithubOAuth2",
     "social_core.backends.vk.VKOAuth2",
+    "social_core.backends.facebook.FacebookOAuth2",
     "django.contrib.auth.backends.ModelBackend",
 )
 
@@ -161,3 +162,8 @@ SOCIAL_AUTH_VK_OAUTH2_KEY = "8186811"
 SOCIAL_AUTH_VK_OAUTH2_SECRET = "AElgJlI1jDR6cthr67qL"
 
 SOCIAL_AUTH_VK_OAUTH2_SCOPE = ["email"]
+
+SOCIAL_AUTH_FACEBOOK_API_VERSION = "2.10"
+
+SOCIAL_AUTH_FACEBOOK_KEY = "2120785821416399"
+SOCIAL_AUTH_FACEBOOK_SECRET = "75713533acf9e6983b822e32e4675be5"
