@@ -31,13 +31,22 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="ddProfile">
             <a class="dropdown-item"
+<<<<<<< HEAD
+              href="{% url 'authapp:profile_edit' pk=request.user.pk %}">Редактировать
+=======
               href="{% url 'authapp:profile_edit' %}">Редактировать
+>>>>>>> master
               профиль</a>
             <a class="dropdown-item" href="#">Мои курсы</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Модерация</a>
             {% if user.is_superuser %}
+<<<<<<< HEAD
+            <a class="dropdown-item" href="{% url 'admin:index' %}"
+              target="_blank">Административный
+=======
             <a class="dropdown-item" href="#">Административный
+>>>>>>> master
               раздел</a>
             {% endif %}
             <div class="dropdown-divider"></div>
