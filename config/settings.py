@@ -41,10 +41,7 @@ INSTALLED_APPS = [
     "social_django",
     "mainapp",
     "authapp",
-<<<<<<< HEAD
     "crispy_forms",
-=======
->>>>>>> master
 ]
 
 MIDDLEWARE = [
@@ -171,8 +168,31 @@ SOCIAL_AUTH_FACEBOOK_API_VERSION = "2.10"
 
 SOCIAL_AUTH_FACEBOOK_KEY = "2120785821416399"
 SOCIAL_AUTH_FACEBOOK_SECRET = "75713533acf9e6983b822e32e4675be5"
-<<<<<<< HEAD
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
-=======
->>>>>>> master
+
+LOG_FILE = BASE_DIR / "var" / "log" / "main_log.log"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {"format": "[%(asctime)s] %(levelname)s %(name)s (%(lineno)d) %(message)s"},
+    },
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": LOG_FILE,
+            "formatter": "console",
+        },
+        "console": {"class": "logging.StreamHandler", "formatter": "console"},
+    },
+    "loggers": {
+        "django": {"level": "INFO", "handlers": ["console"]},
+        "mainapp": {
+            "level": "DEBUG",
+            "handlers": ["file"],
+        },
+    },
+}
